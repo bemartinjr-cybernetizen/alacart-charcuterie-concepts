@@ -333,6 +333,29 @@ footer.ft a:hover{color:var(--ft-accent)}
 .article .cta-card{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px;text-align:center;margin:48px 0}
 .article .cta-card h3{font-size:1.6rem;margin-bottom:12px}
 .article .cta-card p{font-size:1rem;color:var(--muted);margin-bottom:20px}
+/* ---- MOTION: scroll reveal, hero drift, accent underline, success check ---- */
+.reveal{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+html.js .reveal{opacity:0;transform:translateY(30px)}
+.reveal.in{opacity:1!important;transform:none!important}
+.hero .bg img{animation:kenburns 28s ease-in-out infinite alternate;transform-origin:60% 50%}
+@keyframes kenburns{0%{transform:scale(1.06)}100%{transform:scale(1.18) translate(-1.5%,-1.2%)}}
+.sec-head h2{position:relative;display:inline-block}
+.sec-head h2::after{content:"";position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:0;height:2px;background:var(--accent);transition:width 1s .35s cubic-bezier(.2,.7,.2,1)}
+.sec-head.in h2::after{width:56px}
+.svc .ph img,.post .ph img{will-change:transform}
+.quote-success{text-align:center;padding:38px 12px;animation:fadeUp .6s ease}
+.quote-success h3{font-size:1.9rem;margin:16px 0 10px}
+.quote-success p{color:var(--muted);max-width:340px;margin:0 auto}
+.qcheck{width:76px;height:76px;margin:0 auto;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center}
+.qcheck svg{width:46px;height:46px}
+.qcheck circle{stroke:var(--accent);stroke-width:2.5;fill:none;stroke-dasharray:151;stroke-dashoffset:151;animation:draw .6s .05s ease forwards}
+.qcheck path{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke-dasharray:42;stroke-dashoffset:42;animation:draw .45s .5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.btn,.navcta{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .7s ease}
+.btn:hover::after{left:140%}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero .bg img{animation:none}.track{animation:none!important}.sec-head.in h2::after{transition:none}}
 """
 
 THEMES = {
@@ -395,7 +418,8 @@ def head(theme, title, prefix=""):
 <meta name="description" content="A La Cart Charcuterie Co. Mobile charcuterie, grazing tables, boards, cups, and cart catering for weddings and events in Lawrence, KS and the Kansas City metro.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family={t['fonts']}&display=swap" rel="stylesheet">
-<style>:root{{{t['vars']}}}{BASE_CSS}</style></head><body>
+<style>:root{{{t['vars']}}}{BASE_CSS}</style>
+<script>document.documentElement.classList.add('js')</script></head><body>
 <div class="mockbar">CONCEPT MOCKUP for A La Cart Charcuterie Co. &nbsp;&middot;&nbsp; Theme: <b>{t['label']}</b> &nbsp;&middot;&nbsp; built by Eagle Point Publishing</div>"""
 
 def nav(prefix=""):
@@ -421,7 +445,29 @@ def footer(prefix=""):
  </div>
 </div>
 <div class="copyright"><span>&copy; 2026 A La Cart Charcuterie Co. &middot; Lawrence, KS</span><span>Concept design by Eagle Point Publishing</span></div>
-</div></footer></body></html>"""
+</div></footer>
+<script>
+(function(){{
+ var sel=['.sec-head','.intro .txt','.intro .pic','.svc','.post','.gal a','.areas .chips span','.faq','.contact .info','#quoteWrap','.article > p','.article figure','.lead-img','.cta-card'];
+ var els=[];sel.forEach(function(s){{document.querySelectorAll(s).forEach(function(e){{e.classList.add('reveal');els.push(e);}});}});
+ document.querySelectorAll('.svc-grid,.posts,.gal').forEach(function(g){{Array.prototype.forEach.call(g.children,function(c,i){{c.style.transitionDelay=(i*0.08)+'s';}});}});
+ if('IntersectionObserver' in window){{
+   var io=new IntersectionObserver(function(en){{en.forEach(function(x){{if(x.isIntersecting){{x.target.classList.add('in');io.unobserve(x.target);}}}});}},{{threshold:0.12,rootMargin:'0px 0px -7% 0px'}});
+   els.forEach(function(e){{io.observe(e);}});
+ }} else {{ els.forEach(function(e){{e.classList.add('in');}}); }}
+ var hero=document.querySelectorAll('.hero .inner > *');
+ hero.forEach(function(e,i){{e.style.opacity=0;e.style.transform='translateY(22px)';e.style.transition='opacity 1s '+(i*0.13+0.2)+'s ease,transform 1s '+(i*0.13+0.2)+'s cubic-bezier(.2,.7,.2,1)';}});
+ requestAnimationFrame(function(){{requestAnimationFrame(function(){{hero.forEach(function(e){{e.style.opacity=1;e.style.transform='none';}});}});}});
+ var f=document.getElementById('quoteForm');
+ if(f){{f.addEventListener('submit',function(ev){{ev.preventDefault();
+   var w=document.getElementById('quoteWrap');var nm=(f.querySelector('[name=name]')||{{}}).value||'';
+   w.innerHTML='<div class=\\'quote-success\\'><div class=\\'qcheck\\'><svg viewBox=\\'0 0 52 52\\'><circle cx=\\'26\\' cy=\\'26\\' r=\\'23\\'/><path d=\\'M16 27l7 7 14-15\\'/></svg></div><h3>Thank you'+(nm?', '+nm.split(' ')[0]:'')+'!</h3><p>Your request is on its way. Rebecca will reply within one business day with availability and pricing.</p></div>';
+   w.scrollIntoView({{behavior:'smooth',block:'center'}});
+ }});}}
+}})();
+</script>
+<script>setTimeout(function(){{var n=document.querySelectorAll('.reveal');for(var i=0;i<n.length;i++){{n[i].classList.add('in');}}var h=document.querySelectorAll('.hero .inner > *');for(var j=0;j<h.length;j++){{h[j].style.opacity=1;h[j].style.transform='none';}}}},3000);</script>
+</body></html>"""
 
 def reviews_carousel(speed="110s"):
     cards = []
@@ -507,21 +553,36 @@ def faq():
 
 def contact():
     opts = "".join(f"<option>{s['name']}</option>" for s in SERVICES)
+    events = ["Wedding","Graduation / Open house","Corporate / Office","Birthday / Private party","Baby or Bridal shower","Holiday gathering","Other"]
+    eopts = "".join(f"<option>{e}</option>" for e in events)
     return f"""<section class="contact" id="contact"><div class="wrap"><div class="inner">
 <div class="info"><div class="eyebrow">Let's plan something beautiful</div>
 <h3>Request a quote</h3>
-<p style="color:var(--muted);margin-bottom:24px">Tell us the date, the headcount, and the occasion. We will design a spread around it and send pricing. We ask for a few details so we can scope your event accurately.</p>
+<p style="color:var(--muted);margin-bottom:24px">Tell us the date, the headcount, and the occasion. We will design a spread around it and send pricing. We ask for a few details so we can scope your event accurately and reply fast.</p>
 <div class="line">&#9742; <b><a href="tel:{BIZ['phone_raw']}">{BIZ['phone_display']}</a></b></div>
 <div class="line">&#9993; <a href="mailto:{BIZ['email']}">{BIZ['email']}</a></div>
 <div class="line">&#9733; 5.0 on Google &middot; #1 in the Lawrence map pack</div>
 {social_icons()}</div>
-<form class="form" onsubmit="return false">
-<label>Name</label><input placeholder="Your name">
-<label>Email</label><input type="email" placeholder="you@email.com">
-<label>Event date &amp; guest count <span style="font-weight:400;color:var(--muted)">(so we can size your spread)</span></label><input placeholder="e.g. Aug 16, about 80 guests">
-<label>What are you interested in?</label><select>{opts}</select>
-<label>Tell us about your event</label><textarea rows="4" placeholder="Wedding, graduation, corporate, the vibe you want..."></textarea>
-<button class="btn" style="width:100%">Send request</button></form>
+<div id="quoteWrap" class="form">
+<form id="quoteForm">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+ <div><label>Name</label><input name="name" required placeholder="Your name"></div>
+ <div><label>Phone</label><input name="phone" placeholder="{BIZ['phone_display']}"></div>
+</div>
+<label>Email</label><input name="email" type="email" required placeholder="you@email.com">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+ <div><label>Occasion</label><select name="occasion">{eopts}</select></div>
+ <div><label>Service of interest</label><select name="service">{opts}</select></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+ <div><label>Event date</label><input name="date" type="text" placeholder="e.g. Aug 16, 2026"></div>
+ <div><label>Guest count <span style="font-weight:400;color:var(--muted);font-size:.78rem">(to size your spread)</span></label><input name="guests" placeholder="e.g. 80"></div>
+</div>
+<label>Where is your event?</label><input name="location" placeholder="City or venue, e.g. Lawrence or Overland Park">
+<label>Tell us about your event</label><textarea name="message" rows="4" placeholder="The vibe you want, colors, must haves, anything special..."></textarea>
+<button type="submit" class="btn" style="width:100%">Send my quote request</button>
+<p style="font-size:.78rem;color:var(--muted);text-align:center;margin-top:12px">We reply within one business day. No spam, ever.</p>
+</form></div>
 </div></div></section>"""
 
 # ----------------------------------------------------------------------------- BUILD HOMEPAGES

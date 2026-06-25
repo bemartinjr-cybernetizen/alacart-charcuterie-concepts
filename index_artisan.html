@@ -160,7 +160,31 @@ footer.ft a:hover{color:var(--ft-accent)}
 .article .cta-card{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px;text-align:center;margin:48px 0}
 .article .cta-card h3{font-size:1.6rem;margin-bottom:12px}
 .article .cta-card p{font-size:1rem;color:var(--muted);margin-bottom:20px}
-</style></head><body>
+/* ---- MOTION: scroll reveal, hero drift, accent underline, success check ---- */
+.reveal{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+html.js .reveal{opacity:0;transform:translateY(30px)}
+.reveal.in{opacity:1!important;transform:none!important}
+.hero .bg img{animation:kenburns 28s ease-in-out infinite alternate;transform-origin:60% 50%}
+@keyframes kenburns{0%{transform:scale(1.06)}100%{transform:scale(1.18) translate(-1.5%,-1.2%)}}
+.sec-head h2{position:relative;display:inline-block}
+.sec-head h2::after{content:"";position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:0;height:2px;background:var(--accent);transition:width 1s .35s cubic-bezier(.2,.7,.2,1)}
+.sec-head.in h2::after{width:56px}
+.svc .ph img,.post .ph img{will-change:transform}
+.quote-success{text-align:center;padding:38px 12px;animation:fadeUp .6s ease}
+.quote-success h3{font-size:1.9rem;margin:16px 0 10px}
+.quote-success p{color:var(--muted);max-width:340px;margin:0 auto}
+.qcheck{width:76px;height:76px;margin:0 auto;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center}
+.qcheck svg{width:46px;height:46px}
+.qcheck circle{stroke:var(--accent);stroke-width:2.5;fill:none;stroke-dasharray:151;stroke-dashoffset:151;animation:draw .6s .05s ease forwards}
+.qcheck path{stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke-dasharray:42;stroke-dashoffset:42;animation:draw .45s .5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.btn,.navcta{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .7s ease}
+.btn:hover::after{left:140%}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero .bg img{animation:none}.track{animation:none!important}.sec-head.in h2::after{transition:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script></head><body>
 <div class="mockbar">CONCEPT MOCKUP for A La Cart Charcuterie Co. &nbsp;&middot;&nbsp; Theme: <b>Warm Artisan Market</b> &nbsp;&middot;&nbsp; built by Eagle Point Publishing</div><header class="nav"><div class="wrap">
 <a class="brand" href="index_artisan.html"><span class="script">A La Cart</span><span class="sub">Charcuterie Co.</span></a>
 <nav><a href="index_artisan.html#services">Services</a><a href="index_artisan.html#gallery">Gallery</a><a href="index_artisan.html#reviews">Reviews</a><a href="index_artisan.html#journal">Journal</a><a href="index_artisan.html#areas">Areas</a><a href="index_artisan.html#contact">Contact</a><a class="navcta" href="index_artisan.html#contact">Book Now</a></nav>
@@ -259,18 +283,31 @@ footer.ft a:hover{color:var(--ft-accent)}
 <div class="faq-list"><details class='faq'><summary>How far in advance should I book?</summary><p>For weddings and large grazing tables we recommend two to four weeks. Boxes and cups can often be arranged with shorter notice. Popular weekends fill quickly in spring, summer, and fall.</p></details><details class='faq'><summary>How much charcuterie do I need?</summary><p>A grazing table or board is typically planned at one generous serving per guest as an appetizer, or more if it is the main feature. We help you size every order to your headcount.</p></details><details class='faq'><summary>What areas do you serve?</summary><p>We are based in Lawrence and serve the surrounding towns plus the greater Kansas City metro, including Overland Park, Olathe, Leawood, De Soto, and Topeka. Travel beyond Lawrence may include a small fee.</p></details><details class='faq'><summary>Can you accommodate dietary needs?</summary><p>Yes. We regularly build around gluten free, vegetarian, and other preferences. Tell us when you inquire and we design the spread accordingly.</p></details><details class='faq'><summary>Do you set up on site?</summary><p>Grazing tables, the cart, and the trailer are styled on site by Rebecca. Boxes and cups are delivered ready to serve.</p></details></div></div></section><section class="contact" id="contact"><div class="wrap"><div class="inner">
 <div class="info"><div class="eyebrow">Let's plan something beautiful</div>
 <h3>Request a quote</h3>
-<p style="color:var(--muted);margin-bottom:24px">Tell us the date, the headcount, and the occasion. We will design a spread around it and send pricing. We ask for a few details so we can scope your event accurately.</p>
+<p style="color:var(--muted);margin-bottom:24px">Tell us the date, the headcount, and the occasion. We will design a spread around it and send pricing. We ask for a few details so we can scope your event accurately and reply fast.</p>
 <div class="line">&#9742; <b><a href="tel:+19132175908">(913) 217-5908</a></b></div>
 <div class="line">&#9993; <a href="mailto:hello@alacartcharcuterieco.com">hello@alacartcharcuterieco.com</a></div>
 <div class="line">&#9733; 5.0 on Google &middot; #1 in the Lawrence map pack</div>
 <div class="socials"><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a><a href="https://search.google.com/local/reviews?placeid=ChIJtdudUadnv4cRxcH9MTJodZs" target="_blank" rel="noopener" aria-label="Google reviews"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11v3.2h5.1c-.2 1.3-1.5 3.9-5.1 3.9-3.1 0-5.6-2.6-5.6-5.7S8.9 6.7 12 6.7c1.8 0 2.9.7 3.6 1.4l2.4-2.3C16.4 4.2 14.4 3.3 12 3.3 7 3.3 3 7.3 3 12.3s4 9 9 9c5.2 0 8.6-3.6 8.6-8.8 0-.6-.1-1-.2-1.5H12z"/></svg></a><a href="https://www.yelp.com/biz/a-la-cart-charcuterie-lawrence" target="_blank" rel="noopener" aria-label="Yelp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 2c-.9 0-3.7.9-4.4 1.6-.4.4-.5.9-.3 1.4l3 6.7c.5 1 2 .7 2-.4l.2-8.2c0-.7-.6-1.2-1.7-1.1zM7.3 13.2 3.6 12c-.5-.2-1 0-1.3.5-.5 1-.8 3.4-.5 4.5.1.5.5.9 1.1.9l4.1-.4c1-.1 1.2-1.6.2-2zm2 2.3c-.4-.3-1-.2-1.3.2L5.4 19c-.4.5-.3 1.1.2 1.5.9.6 3.1 1.3 4 1.2.5 0 .9-.4 1-.9l.3-4.1c0-.6-.4-.9-1.6-1.2zm5.9.3c-.4-.5-1-.5-1.4-.1l-.3.3c-.6.7-.3 1.7.1 2.3l2.4 3.3c.3.4.9.5 1.4.2 1-.6 2.6-2.4 3-3.4.2-.5 0-1-.5-1.2L15.1 15.8zm5.4-4.6-4 1.2c-1 .3-.9 1.8.2 2l4 .4c.6 0 1-.4 1.1-.9.3-1.1 0-3.5-.5-4.5-.3-.5-.8-.6-1.3-.4z"/></svg></a></div></div>
-<form class="form" onsubmit="return false">
-<label>Name</label><input placeholder="Your name">
-<label>Email</label><input type="email" placeholder="you@email.com">
-<label>Event date &amp; guest count <span style="font-weight:400;color:var(--muted)">(so we can size your spread)</span></label><input placeholder="e.g. Aug 16, about 80 guests">
-<label>What are you interested in?</label><select><option>Grazing Tables</option><option>Charcuterie Boards</option><option>Boxes and Cups</option><option>The Charcuterie Cart</option><option>The Charcuterie Trailer</option><option>Add Ons and Custom</option></select>
-<label>Tell us about your event</label><textarea rows="4" placeholder="Wedding, graduation, corporate, the vibe you want..."></textarea>
-<button class="btn" style="width:100%">Send request</button></form>
+<div id="quoteWrap" class="form">
+<form id="quoteForm">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+ <div><label>Name</label><input name="name" required placeholder="Your name"></div>
+ <div><label>Phone</label><input name="phone" placeholder="(913) 217-5908"></div>
+</div>
+<label>Email</label><input name="email" type="email" required placeholder="you@email.com">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+ <div><label>Occasion</label><select name="occasion"><option>Wedding</option><option>Graduation / Open house</option><option>Corporate / Office</option><option>Birthday / Private party</option><option>Baby or Bridal shower</option><option>Holiday gathering</option><option>Other</option></select></div>
+ <div><label>Service of interest</label><select name="service"><option>Grazing Tables</option><option>Charcuterie Boards</option><option>Boxes and Cups</option><option>The Charcuterie Cart</option><option>The Charcuterie Trailer</option><option>Add Ons and Custom</option></select></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+ <div><label>Event date</label><input name="date" type="text" placeholder="e.g. Aug 16, 2026"></div>
+ <div><label>Guest count <span style="font-weight:400;color:var(--muted);font-size:.78rem">(to size your spread)</span></label><input name="guests" placeholder="e.g. 80"></div>
+</div>
+<label>Where is your event?</label><input name="location" placeholder="City or venue, e.g. Lawrence or Overland Park">
+<label>Tell us about your event</label><textarea name="message" rows="4" placeholder="The vibe you want, colors, must haves, anything special..."></textarea>
+<button type="submit" class="btn" style="width:100%">Send my quote request</button>
+<p style="font-size:.78rem;color:var(--muted);text-align:center;margin-top:12px">We reply within one business day. No spam, ever.</p>
+</form></div>
 </div></div></section><footer class="ft"><div class="wrap">
 <div class="top">
  <div><div class="script">A La Cart</div><p>Mobile charcuterie, grazing tables, and cart catering for Lawrence and Kansas City. Hand built and styled on site by Rebecca, serving Lawrence and the greater Kansas City metro.</p><div class="socials"><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a><a href="https://search.google.com/local/reviews?placeid=ChIJtdudUadnv4cRxcH9MTJodZs" target="_blank" rel="noopener" aria-label="Google reviews"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 11v3.2h5.1c-.2 1.3-1.5 3.9-5.1 3.9-3.1 0-5.6-2.6-5.6-5.7S8.9 6.7 12 6.7c1.8 0 2.9.7 3.6 1.4l2.4-2.3C16.4 4.2 14.4 3.3 12 3.3 7 3.3 3 7.3 3 12.3s4 9 9 9c5.2 0 8.6-3.6 8.6-8.8 0-.6-.1-1-.2-1.5H12z"/></svg></a><a href="https://www.yelp.com/biz/a-la-cart-charcuterie-lawrence" target="_blank" rel="noopener" aria-label="Yelp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 2c-.9 0-3.7.9-4.4 1.6-.4.4-.5.9-.3 1.4l3 6.7c.5 1 2 .7 2-.4l.2-8.2c0-.7-.6-1.2-1.7-1.1zM7.3 13.2 3.6 12c-.5-.2-1 0-1.3.5-.5 1-.8 3.4-.5 4.5.1.5.5.9 1.1.9l4.1-.4c1-.1 1.2-1.6.2-2zm2 2.3c-.4-.3-1-.2-1.3.2L5.4 19c-.4.5-.3 1.1.2 1.5.9.6 3.1 1.3 4 1.2.5 0 .9-.4 1-.9l.3-4.1c0-.6-.4-.9-1.6-1.2zm5.9.3c-.4-.5-1-.5-1.4-.1l-.3.3c-.6.7-.3 1.7.1 2.3l2.4 3.3c.3.4.9.5 1.4.2 1-.6 2.6-2.4 3-3.4.2-.5 0-1-.5-1.2L15.1 15.8zm5.4-4.6-4 1.2c-1 .3-.9 1.8.2 2l4 .4c.6 0 1-.4 1.1-.9.3-1.1 0-3.5-.5-4.5-.3-.5-.8-.6-1.3-.4z"/></svg></a></div></div>
@@ -284,4 +321,26 @@ footer.ft a:hover{color:var(--ft-accent)}
  </div>
 </div>
 <div class="copyright"><span>&copy; 2026 A La Cart Charcuterie Co. &middot; Lawrence, KS</span><span>Concept design by Eagle Point Publishing</span></div>
-</div></footer></body></html>
+</div></footer>
+<script>
+(function(){
+ var sel=['.sec-head','.intro .txt','.intro .pic','.svc','.post','.gal a','.areas .chips span','.faq','.contact .info','#quoteWrap','.article > p','.article figure','.lead-img','.cta-card'];
+ var els=[];sel.forEach(function(s){document.querySelectorAll(s).forEach(function(e){e.classList.add('reveal');els.push(e);});});
+ document.querySelectorAll('.svc-grid,.posts,.gal').forEach(function(g){Array.prototype.forEach.call(g.children,function(c,i){c.style.transitionDelay=(i*0.08)+'s';});});
+ if('IntersectionObserver' in window){
+   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.12,rootMargin:'0px 0px -7% 0px'});
+   els.forEach(function(e){io.observe(e);});
+ } else { els.forEach(function(e){e.classList.add('in');}); }
+ var hero=document.querySelectorAll('.hero .inner > *');
+ hero.forEach(function(e,i){e.style.opacity=0;e.style.transform='translateY(22px)';e.style.transition='opacity 1s '+(i*0.13+0.2)+'s ease,transform 1s '+(i*0.13+0.2)+'s cubic-bezier(.2,.7,.2,1)';});
+ requestAnimationFrame(function(){requestAnimationFrame(function(){hero.forEach(function(e){e.style.opacity=1;e.style.transform='none';});});});
+ var f=document.getElementById('quoteForm');
+ if(f){f.addEventListener('submit',function(ev){ev.preventDefault();
+   var w=document.getElementById('quoteWrap');var nm=(f.querySelector('[name=name]')||{}).value||'';
+   w.innerHTML='<div class=\'quote-success\'><div class=\'qcheck\'><svg viewBox=\'0 0 52 52\'><circle cx=\'26\' cy=\'26\' r=\'23\'/><path d=\'M16 27l7 7 14-15\'/></svg></div><h3>Thank you'+(nm?', '+nm.split(' ')[0]:'')+'!</h3><p>Your request is on its way. Rebecca will reply within one business day with availability and pricing.</p></div>';
+   w.scrollIntoView({behavior:'smooth',block:'center'});
+ });}
+})();
+</script>
+<script>setTimeout(function(){var n=document.querySelectorAll('.reveal');for(var i=0;i<n.length;i++){n[i].classList.add('in');}var h=document.querySelectorAll('.hero .inner > *');for(var j=0;j<h.length;j++){h[j].style.opacity=1;h[j].style.transform='none';}},3000);</script>
+</body></html>
