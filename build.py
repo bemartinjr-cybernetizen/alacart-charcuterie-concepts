@@ -136,7 +136,7 @@ BLOG = [
    excerpt="From headcount to styling, here is how a grazing table comes together for a Kansas City celebration.",
    body=[
      "A grazing table is the centerpiece guests remember. Instead of a single board, it is a flowing, abundant spread built right on your table, layered with cured meats, artisan cheeses, fresh and dried fruit, nuts, honey, crackers, and seasonal touches.",
-     "For Kansas City and Lawrence events, we plan the table around your guest count and the role it plays. As a cocktail hour feature it reads as one generous serving per guest. As the main event, we build it larger and richer so it carries the room.",
+     "For events across the region, we plan the table around your guest count and the role it plays. As a cocktail hour feature it is typically planned at about one serving per guest. As the main event, it is built larger and richer.",
      "Everything is styled on site. Rebecca arrives, dresses the table, and arranges each element so it looks effortless and photographs beautifully. All you do is point your guests toward it.",
    ]),
  dict(slug="wedding-charcuterie-cart-grazing-table", cat="Weddings", thumb="hero_cart", inline=["trailer","cups_trio"],
@@ -160,7 +160,7 @@ BLOG = [
    excerpt="The most common question we hear. A quick, honest guide to sizing your order.",
    body=[
      "The right amount depends on one thing: is charcuterie the appetizer, or the meal? As an appetizer before dinner, plan roughly one generous serving per guest. As the main feature of a party, plan closer to two to three servings per guest.",
-     "For cups and boxes the math is easy, since each one is a single portion. For grazing tables and boards we scale the size of the spread to your headcount so nothing runs short and the table still looks full at the end of the night.",
+     "For cups and boxes the math is easy, since each one is a single portion. For grazing tables and boards we scale the size of the spread to your headcount so nothing runs short and there is always more than enough throughout the event.",
      "When in doubt, tell us your guest count and the occasion. We have sized hundreds of events and will recommend the right build so you are never guessing.",
    ]),
  dict(slug="vintage-charcuterie-trailer-lawrence", cat="The Trailer", thumb="trailer", inline=["hero_cart"],
@@ -495,7 +495,10 @@ def head(theme, title, prefix=""):
 
 def nav(prefix=""):
     links = ["Services","Gallery","Reviews","Journal","Areas","Contact"]
-    nl = "".join(f'<a href="{prefix}index_THEME.html#{l.lower()}">{l}</a>' for l in links)
+    def href(l):
+        if l == "Areas": return f'{prefix}areas/index.html'   # nav Areas -> city hub
+        return f'{prefix}index_THEME.html#{l.lower()}'
+    nl = "".join(f'<a href="{href(l)}">{l}</a>' for l in links)
     return f"""<header class="nav"><div class="wrap">
 <a class="brand" href="{prefix}index_THEME.html"><span class="script">A La Cart</span><span class="sub">Charcuterie Co.</span></a>
 <nav>{nl}<a class="navcta" href="{prefix}index_THEME.html#contact">Book Now</a></nav>
@@ -597,13 +600,11 @@ def gallery(prefix=""):
 <div class="gal">{cells}</div></div></section>"""
 
 def areas(prefix=""):
-    chips = "".join(f'<a href="{prefix}areas/{c["slug"]}.html">{c["name"]}</a>' for c in CITIES)
     return f"""<section class="areas" id="areas"><div class="wrap"><div class="sec-head">
 <div class="eyebrow" style="color:var(--on-accent);opacity:.85">Where we serve</div>
 <h2>Lawrence and the Greater Topeka and Kansas City metros</h2>
-<p style="color:var(--on-accent);opacity:.9">Based in Lawrence, KS and traveling throughout the region for weddings, parties, and corporate events. Tap your town for details.</p></div>
-<div class="chips">{chips}</div>
-<div style="text-align:center;margin-top:30px"><a class="btn ghost" style="color:var(--on-accent);border-color:var(--on-accent)" href="{prefix}areas/index.html">See all service areas</a></div>
+<p style="color:var(--on-accent);opacity:.9">Based in Lawrence, KS and traveling within about a 50 mile radius for weddings, parties, and corporate events, from Topeka to the Kansas City metro.</p></div>
+<div style="text-align:center;margin-top:30px"><a class="btn ghost" style="color:var(--on-accent);border-color:var(--on-accent)" href="{prefix}areas/index.html">Explore our service areas</a></div>
 </div></section>"""
 
 def blog_teaser(prefix=""):
