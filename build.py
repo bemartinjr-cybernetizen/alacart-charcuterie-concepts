@@ -73,7 +73,7 @@ REVIEWS = [
 FAQS = [
     ("How far in advance should I book?", "For weddings and large grazing tables we recommend two to four weeks. Boxes and cups can often be arranged with shorter notice. Popular weekends fill quickly in spring, summer, and fall."),
     ("How much charcuterie do I need?", "A grazing table or board is typically planned at one generous serving per guest as an appetizer, or more if it is the main feature. We help you size every order to your headcount."),
-    ("What areas do you serve?", "We are based in Lawrence and serve the surrounding towns plus the greater Kansas City metro, including Overland Park, Olathe, Leawood, De Soto, and Topeka. Travel beyond Lawrence may include a small fee."),
+    ("What areas do you serve?", "We are based in Lawrence and serve the surrounding towns plus the Greater Topeka and Kansas City metros, including Overland Park, Olathe, Leawood, and De Soto. Travel beyond Lawrence may include a small fee."),
     ("Can you accommodate dietary needs?", "Yes. We regularly build around gluten free, vegetarian, and other preferences. Tell us when you inquire and we design the spread accordingly."),
     ("Do you set up on site?", "Grazing tables, the cart, and the trailer are styled on site by Rebecca. Boxes and cups are delivered ready to serve."),
 ]
@@ -118,7 +118,7 @@ BLOG = [
    body=[
      "Some details make guests reach for their phones the second they see them. Our vintage converted trailer, restyled as a charcuterie bar, is one of them. Dressed with florals, greenery, and warm string lights, it becomes the visual anchor of an outdoor event.",
      "Inside, it serves the same beautifully built charcuterie our boards and cups are known for. Outside, it doubles as a photo moment and a talking point that ties your whole setup together.",
-     "The trailer is perfect for weddings, milestone parties, and outdoor gatherings around Lawrence and the Kansas City metro where you want a centerpiece guests will not forget.",
+     "The trailer is perfect for weddings, milestone parties, and outdoor gatherings around Lawrence and the Greater Topeka and Kansas City metros where you want a centerpiece guests will not forget.",
    ]),
  dict(slug="charcuterie-boxes-corporate-gifting-lawrence", cat="Boxes", thumb="boxes_clam", inline=["boxes_holiday","crackers"],
    title="Charcuterie Boxes for Corporate Events and Gifting in Lawrence",
@@ -174,7 +174,7 @@ BLOG = [
    body=[
      "A La Cart Charcuterie Co. began with a simple belief: that food can be beautiful, generous, and personal all at once. Rebecca is the artist behind every spread, and her eye for detail is what customers mention again and again.",
      "From a single charcuterie box to a full wedding grazing table, she builds each order by hand and styles it on site, treating presentation as seriously as the ingredients. Guests do not just eat the spread, they remember it.",
-     "Based in Lawrence and serving the greater Kansas City metro, A La Cart has grown through word of mouth and five star reviews, one beautifully built table at a time.",
+     "Based in Lawrence and serving the Greater Topeka and Kansas City metros, A La Cart has grown through word of mouth and five star reviews, one beautifully built table at a time.",
    ]),
 ]
 
@@ -415,7 +415,7 @@ def head(theme, title, prefix=""):
     return f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title>
-<meta name="description" content="A La Cart Charcuterie Co. Mobile charcuterie, grazing tables, boards, cups, and cart catering for weddings and events in Lawrence, KS and the Kansas City metro.">
+<meta name="description" content="A La Cart Charcuterie Co. Mobile charcuterie, grazing tables, boards, cups, and cart catering for weddings and events in Lawrence, KS and the Greater Topeka and Kansas City metros.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family={t['fonts']}&display=swap" rel="stylesheet">
 <style>:root{{{t['vars']}}}{BASE_CSS}</style>
@@ -434,7 +434,7 @@ def footer(prefix=""):
     svc = "".join(f'<a href="{prefix}index_THEME.html#services">{s["name"]}</a>' for s in SERVICES[:5])
     return f"""<footer class="ft"><div class="wrap">
 <div class="top">
- <div><div class="script">A La Cart</div><p>{BIZ['tagline']} Hand built and styled on site by Rebecca, serving Lawrence and the greater Kansas City metro.</p>{social_icons(prefix)}</div>
+ <div><div class="script">A La Cart</div><p>{BIZ['tagline']} Hand built and styled on site by Rebecca, serving Lawrence and the Greater Topeka and Kansas City metros.</p>{social_icons(prefix)}</div>
  <div><h4>Services</h4>{svc}</div>
  <div><h4>Get in touch</h4>
    <a href="tel:{BIZ['phone_raw']}">{BIZ['phone_display']}</a>
@@ -499,7 +499,7 @@ def hero(theme, prefix=""):
 <div class="bg">{img_tag('hero_cart','A La Cart branded charcuterie cart at an outdoor wedding',prefix=prefix)}</div>
 <div class="scrim"></div>
 <div class="wrap"><div class="inner">
-<div class="eyebrow">Lawrence &middot; Kansas City Metro</div>
+<div class="eyebrow">Lawrence &middot; Topeka &middot; Kansas City</div>
 <h1>Charcuterie that becomes the centerpiece</h1>
 <p class="lede">Grazing tables, boards, cups, and our signature mobile cart. Beautifully built by hand, styled on site, and impossible to forget.</p>
 <div class="cta-row"><a class="btn" href="#contact">Request a quote</a><a class="btn ghost" href="#services">View services</a></div>
@@ -529,7 +529,7 @@ def areas():
     chips = "".join(f"<span>{a}</span>" for a in BIZ["areas"])
     return f"""<section class="areas" id="areas"><div class="wrap"><div class="sec-head">
 <div class="eyebrow" style="color:var(--on-accent);opacity:.85">Where we serve</div>
-<h2>Lawrence and the greater Kansas City metro</h2>
+<h2>Lawrence and the Greater Topeka and Kansas City metros</h2>
 <p style="color:var(--on-accent);opacity:.9">Based in Lawrence, KS and traveling throughout the region for weddings, parties, and corporate events.</p></div>
 <div class="chips">{chips}</div></div></section>"""
 
@@ -607,7 +607,7 @@ def build_blog():
     idx = (head(theme,"The Journal | A La Cart Charcuterie Co.",pre) + nav(pre)
            + f"""<section style="padding-top:64px"><div class="wrap"><div class="sec-head">
 <div class="eyebrow">The Journal</div><h2>Charcuterie tips, planning &amp; inspiration</h2>
-<p>Ideas and guides for weddings, parties, and gatherings across Lawrence and the Kansas City metro.</p></div>
+<p>Ideas and guides for weddings, parties, and gatherings across Lawrence and the Greater Topeka and Kansas City metros.</p></div>
 <div class="posts">{cards}</div></div></section>""" + footer(pre))
     idx = idx.replace("index_THEME.html", f"index_{theme}.html")
     open(os.path.join(ROOT,"blog","index.html"),"w").write(idx)
