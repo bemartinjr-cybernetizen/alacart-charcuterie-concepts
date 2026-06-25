@@ -69,6 +69,12 @@
     });
   });
 
+  // scrapbook service cards -> jump to the quote form (so "Pick your spread" actually does something)
+  document.querySelectorAll('.deck .card').forEach(function (c) {
+    c.style.cursor = 'pointer';
+    c.addEventListener('click', function () { location.hash = '#contact'; });
+  });
+
   // quote-request form success
   var f = document.getElementById('quoteForm');
   if (f) {
