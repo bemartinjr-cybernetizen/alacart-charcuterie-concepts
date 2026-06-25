@@ -66,6 +66,10 @@ html.ready .lines .line span{transform:none}.lines .line:nth-child(2) span{trans
 .hot:hover .tip{opacity:1;transform:translateX(-50%) translateY(0)}
 .annotated-hint{position:absolute;left:16px;bottom:16px;background:rgba(40,20,25,.7);color:#fff;font-size:.74rem;letter-spacing:.04em;padding:6px 12px;border-radius:20px;z-index:3}
 @media(max-width:860px),(pointer:coarse){.hot,.annotated-hint{display:none}}
+.band.anno{min-height:auto}
+.band.anno .pic{overflow:visible;display:flex;align-items:center;justify-content:center;background:var(--paper);padding:40px}
+.band.anno .annoimg{position:relative;width:100%;max-width:560px;line-height:0;box-shadow:0 18px 40px var(--shadow)}
+.band.anno .annoimg img{width:100%;height:auto;display:block}
 .band .pane{display:flex;flex-direction:column;justify-content:center;padding:80px 70px;background:var(--paper)}
 .band:nth-child(even) .pic{order:2}
 .band:nth-child(even) .pane{background:var(--cream)}
@@ -192,15 +196,15 @@ input[type=date]{font-family:inherit}
 </section>
 
 <section id="services">
-  <div class="band reveal"><div class="pic annotated"><img src="assets/img/real/fb_122149932296874064_2048x1513.jpg" alt="A grazing-table-style spread">
-    <span class="hot" style="left:28%;top:52%"><span class="tip">Aged &amp; soft cheeses</span></span>
-    <span class="hot" style="left:50%;top:44%"><span class="tip">Hand rolled salami roses</span></span>
-    <span class="hot" style="left:20%;top:33%"><span class="tip">French macarons</span></span>
-    <span class="hot" style="left:73%;top:30%"><span class="tip">Fresh berries &amp; fruit</span></span>
-    <span class="hot" style="left:60%;top:23%"><span class="tip">Marinated olives</span></span>
-    <span class="hot" style="left:44%;top:72%"><span class="tip">Sweet &amp; savory bites</span></span>
+  <div class="band reveal anno"><div class="pic annotated"><div class="annoimg"><img src="assets/img/real/fb_122149932296874064_2048x1513.jpg" alt="A grazing-table-style spread">
+    <span class="hot" style="left:23%;top:15%"><span class="tip">Fresh red grapes</span></span>
+    <span class="hot" style="left:72%;top:32%"><span class="tip">Marinated green olives</span></span>
+    <span class="hot" style="left:83%;top:26%"><span class="tip">Boursin garlic &amp; herb cheese</span></span>
+    <span class="hot" style="left:49%;top:54%"><span class="tip">Hand rolled salami roses</span></span>
+    <span class="hot" style="left:16%;top:47%"><span class="tip">French macarons</span></span>
+    <span class="hot" style="left:83%;top:57%"><span class="tip">Whole grain mustard</span></span>
     <span class="annotated-hint">Hover the dots to explore the spread</span>
-  </div>
+  </div></div>
     <div class="pane"><div class="num">01 &middot; The showpiece</div><h2>Grazing Tables</h2><div class="price">from $15 / guest</div><p>A lavish, hand built spread of cured meats, artisan cheeses, fruit, nuts, and honey, styled on site for weddings and larger celebrations.</p><a class="btn" href="#contact">Plan a grazing table</a></div></div>
   <div class="band reveal"><div class="pic"><img src="assets/img/real/cart_at_wedding_2.jpg" alt="Charcuterie cart"></div>
     <div class="pane"><div class="num">02 &middot; The signature</div><h2>The Charcuterie Cart</h2><div class="price">from $10 / guest + cart fee</div><p>Our mobile cart rolls into your venue under a striped umbrella, a living centerpiece guests gather around all evening.</p><a class="btn" href="#contact">Book the cart</a></div></div>
