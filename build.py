@@ -431,7 +431,7 @@ html.js .reveal{opacity:0;transform:translateY(30px)}
 
 THEMES = {
  "editorial": dict(
-   label="Editorial Boutique",
+   label="Editorial",
    fonts="Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&family=Pinyon+Script",
    vars="""
     --display:'Cormorant Garamond',serif; --body:'Jost',sans-serif; --script:'Pinyon Script',cursive; --dw:600;
@@ -443,7 +443,7 @@ THEMES = {
     --ft-bg:#2b2a26; --ft-ink:#f3efe6; --ft-muted:#a8a294; --ft-accent:#c9b888; --ft-line:#43413a;
    """),
  "artisan": dict(
-   label="Warm Artisan Market",
+   label="Maker's Table",
    fonts="Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&family=Caveat:wght@600",
    vars="""
     --display:'Fraunces',serif; --body:'Nunito Sans',sans-serif; --script:'Caveat',cursive; --dw:600;
@@ -455,7 +455,7 @@ THEMES = {
     --ft-bg:#3a2b21; --ft-ink:#f5e9d8; --ft-muted:#bda690; --ft-accent:#e09a4a; --ft-line:#54402f;
    """),
  "moody": dict(
-   label="Moody Gourmet",
+   label="Warm Luxe",
    fonts="Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=Pinyon+Script",
    vars="""
     --display:'Playfair Display',serif; --body:'Inter',sans-serif; --script:'Pinyon Script',cursive; --dw:600;
