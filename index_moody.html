@@ -28,10 +28,10 @@ section{padding:0}
 /* NAV */
 header[data-nav]{position:sticky;top:0;z-index:60;background:var(--wine-d);box-shadow:0 4px 22px rgba(40,20,25,.28)}
 header[data-nav] .bar{display:flex;align-items:center;justify-content:space-between;height:96px}
-header[data-nav] .logo .s{font-family:'Pinyon Script',cursive;font-size:2.4rem;color:#fff;line-height:.8;display:block}
-header[data-nav] .logo .t{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.88)}
+header[data-nav] .logo .s{font-family:'Pinyon Script',cursive;font-size:2.7rem;color:#fff;line-height:.8;display:block}
+header[data-nav] .logo .t{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9)}
 header[data-nav] nav{display:flex;gap:34px;align-items:center}
-header[data-nav] nav a{color:#fff;font-size:.95rem;font-weight:500;opacity:.96}
+header[data-nav] nav a{color:#fff;font-size:1.02rem;font-weight:500;opacity:.96}
 header[data-nav] nav a:hover{opacity:1;color:var(--gold)}
 header[data-nav] .navcta{padding:11px 24px;border:1px solid rgba(255,255,255,.7)}
 header[data-nav] .navcta:hover{background:var(--gold);border-color:var(--gold);color:var(--wine-d)}
@@ -161,6 +161,11 @@ footer a{color:#d3b5a6;display:block;margin-bottom:9px;font-size:.92rem}footer a
 body.js-on .reveal{opacity:0;transform:translateY(30px)}
 .reveal.in{opacity:1!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.lines .line span{transform:none}.reveal{opacity:1!important;transform:none!important}.hero .bg{inset:0}}
+
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;margin-bottom:16px}
+.chk{display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:400;margin:0;cursor:pointer}
+.chk input[type=checkbox]{width:auto;margin:0;accent-color:var(--accent,#7c8a6e)}
+input[type=date]{font-family:inherit}
 </style>
 </head>
 <body>
@@ -187,14 +192,14 @@ body.js-on .reveal{opacity:0;transform:translateY(30px)}
 </section>
 
 <section id="services">
-  <div class="band reveal"><div class="pic annotated"><img src="assets/img/real/fb_122148158648874064_2045x2048.jpg" alt="Grazing table">
-    <span class="hot" style="left:23%;top:40%"><span class="tip">Aged &amp; soft cheeses</span></span>
-    <span class="hot" style="left:49%;top:31%"><span class="tip">Hand rolled salami roses</span></span>
-    <span class="hot" style="left:66%;top:50%"><span class="tip">Creamy brie wedges</span></span>
-    <span class="hot" style="left:40%;top:66%"><span class="tip">French macarons</span></span>
-    <span class="hot" style="left:71%;top:23%"><span class="tip">Fresh berries &amp; fruit</span></span>
-    <span class="hot" style="left:25%;top:69%"><span class="tip">Artisan crackers</span></span>
-    <span class="annotated-hint">Hover the dots to explore the board</span>
+  <div class="band reveal"><div class="pic annotated"><img src="assets/img/real/fb_122149932296874064_2048x1513.jpg" alt="A grazing-table-style spread">
+    <span class="hot" style="left:28%;top:52%"><span class="tip">Aged &amp; soft cheeses</span></span>
+    <span class="hot" style="left:50%;top:44%"><span class="tip">Hand rolled salami roses</span></span>
+    <span class="hot" style="left:20%;top:33%"><span class="tip">French macarons</span></span>
+    <span class="hot" style="left:73%;top:30%"><span class="tip">Fresh berries &amp; fruit</span></span>
+    <span class="hot" style="left:60%;top:23%"><span class="tip">Marinated olives</span></span>
+    <span class="hot" style="left:44%;top:72%"><span class="tip">Sweet &amp; savory bites</span></span>
+    <span class="annotated-hint">Hover the dots to explore the spread</span>
   </div>
     <div class="pane"><div class="num">01 &middot; The showpiece</div><h2>Grazing Tables</h2><div class="price">from $15 / guest</div><p>A lavish, hand built spread of cured meats, artisan cheeses, fruit, nuts, and honey, styled on site for weddings and larger celebrations.</p><a class="btn" href="#contact">Plan a grazing table</a></div></div>
   <div class="band reveal"><div class="pic"><img src="assets/img/real/cart_at_wedding_2.jpg" alt="Charcuterie cart"></div>
@@ -202,7 +207,7 @@ body.js-on .reveal{opacity:0;transform:translateY(30px)}
   <div class="band reveal"><div class="pic"><img src="assets/img/real/wedding_trailer.jpg" alt="Charcuterie trailer"></div>
     <div class="pane"><div class="num">03 &middot; The wow factor</div><h2>The Charcuterie Trailer</h2><div class="price">custom quote</div><p>A vintage converted trailer turned charcuterie bar, dressed with florals and string lights. The showstopper for outdoor weddings and events.</p><a class="btn" href="#contact">Ask about the trailer</a></div></div>
   <div class="wrap"><div class="trio">
-    <div class="c reveal"><div class="ph"><img src="assets/img/real/fb_122149932296874064_2048x1513.jpg" alt="Charcuterie board"></div><div class="b"><h3>Charcuterie Boards</h3><div class="price">from $15 / guest</div><p>Beautifully arranged boards for dinner parties, showers, and intimate gatherings.</p></div></div>
+    <div class="c reveal"><div class="ph"><img src="assets/img/real/fb_122148158648874064_2045x2048.jpg" alt="A round charcuterie board"></div><div class="b"><h3>Charcuterie Boards</h3><div class="price">from $15 / guest</div><p>Beautifully arranged boards for dinner parties, showers, and intimate gatherings.</p></div></div>
     <div class="c reveal"><div class="ph"><img src="assets/img/real/fb_122158624262874064_2048x1536.jpg" alt="Charcuterie cups"></div><div class="b"><h3>Boxes &amp; Cups</h3><div class="price">from $12 / guest</div><p>Individually portioned cups and grab and go boxes for cocktail hours and easy hosting.</p></div></div>
     <div class="c reveal"><div class="ph"><img src="assets/img/real/fb_122164717466874064_1536x2048.jpg" alt="Add ons"></div><div class="b"><h3>Add Ons &amp; Custom</h3><div class="price">custom quote</div><p>Cracker and fig trays, sandwich add ons, dietary requests, and fully custom builds available.</p></div></div>
   </div></div>
@@ -215,7 +220,7 @@ body.js-on .reveal{opacity:0;transform:translateY(30px)}
     <h2>Meet Rebecca</h2>
     <p>A La Cart Charcuterie Co. is the work of Rebecca, and she is the heart of it. From her home base in Lawrence, Kansas, she builds nearly every grazing table, board, cup, and box herself, and styles each one on site for weddings and events across the region.</p>
     <p>What she pours into the work is the difference: a sense of etiquette, beauty, and timing that clients say they have not experienced even with other charcuterie companies. Guests do not just eat what she creates, they photograph it, talk about it, and ask who made it.</p>
-    <p>She has grown A La Cart almost entirely by word of mouth, one beautifully built table at a time. For Rebecca, it has never been about volume, it is about making something generous, elegant, and personal for every event she touches.</p>
+    <p>She has grown A La Cart Charcuterie Co. almost entirely by word of mouth, one beautifully built table at a time. For Rebecca, it has never been about volume, it is about making something generous, elegant, and personal for every event she touches.</p>
     <a class="btn" href="#contact">Plan your event with Rebecca</a>
   </div>
 </div></div></section>
@@ -252,7 +257,7 @@ body.js-on .reveal{opacity:0;transform:translateY(30px)}
 </div></section>
 
 <section class="film" id="gallery">
-  <div class="wrap"><div class="head reveal"><div class="eyebrow">The spread</div><h2>A look at our work</h2></div></div>
+  <div class="wrap"><div class="head reveal"><div class="eyebrow">The spread</div><h2>A look at our work</h2><p style="text-align:center;color:var(--muted);margin-top:10px">See all our photos on <a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener" style="border-bottom:1px solid currentColor">Facebook</a></p></div></div>
   <div class="strip"><div class="track">
     <img src="assets/img/real/fb_122148158648874064_2045x2048.jpg" alt="Grazing board">
     <img src="assets/img/real/cart_at_wedding.jpg" alt="Charcuterie cart">
@@ -300,8 +305,8 @@ body.js-on .reveal{opacity:0;transform:translateY(30px)}
       <form id="quoteForm">
         <div class="two"><div><label>Name</label><input name="name" required placeholder="Your name"></div><div><label>Phone</label><input name="phone" placeholder="(913) 217-5908"></div></div>
         <label>Email</label><input name="email" type="email" required placeholder="you@email.com">
-        <div class="two"><div><label>Occasion</label><select><option>Wedding</option><option>Graduation / Open house</option><option>Corporate</option><option>Private party</option><option>Shower</option><option>Holiday</option><option>Other</option></select></div><div><label>Service</label><select><option>Grazing Tables</option><option>Charcuterie Boards</option><option>Boxes &amp; Cups</option><option>The Charcuterie Cart</option><option>The Charcuterie Trailer</option><option>Add Ons &amp; Custom</option></select></div></div>
-        <div class="two"><div><label>Event date</label><input placeholder="e.g. Aug 16, 2026"></div><div><label>Guest count <span style="font-weight:400;color:var(--muted);font-size:.76rem">(to size your spread)</span></label><input placeholder="e.g. 80"></div></div>
+        <div class="two"><div><label>Occasion</label><select><option>Wedding</option><option>Graduation / Open house</option><option>Corporate</option><option>Private party</option><option>Shower</option><option>Holiday</option><option>Other</option></select></div><div><label>Service(s) of interest <span style="font-weight:400;color:var(--muted);font-size:.76rem">(select all that apply)</span></label><div class="checks"><label class="chk"><input type="checkbox" name="service"> Grazing Tables</label><label class="chk"><input type="checkbox" name="service"> Charcuterie Boards</label><label class="chk"><input type="checkbox" name="service"> Boxes &amp; Cups</label><label class="chk"><input type="checkbox" name="service"> The Charcuterie Cart</label><label class="chk"><input type="checkbox" name="service"> The Charcuterie Trailer</label><label class="chk"><input type="checkbox" name="service"> Add Ons &amp; Custom</label></div></div></div>
+        <div class="two"><div><label>Event date</label><input type="date" min="2026-06-25" aria-label="Event date"></div><div><label>Guest count <span style="font-weight:400;color:var(--muted);font-size:.76rem">(to size your spread)</span></label><input placeholder="e.g. 80"></div></div>
         <label>Where is your event?</label><input placeholder="City or venue, e.g. Lawrence or Overland Park">
         <label>Tell us about your event</label><textarea rows="3" placeholder="The vibe you want, colors, must haves..."></textarea>
         <button class="btn" style="width:100%" type="submit">Send my quote request</button>
