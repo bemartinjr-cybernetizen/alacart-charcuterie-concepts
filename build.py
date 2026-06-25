@@ -813,7 +813,7 @@ def build_blog():
 def build_chooser():
     cards = ""
     blurbs = {"editorial":"Editorial magazine. A fixed vertical side nav, asymmetric split hero, numbered zig-zag service rows, and one oversized rotating quote. Type and whitespace led.",
-              "artisan":"Maker's table scrapbook. Arched photo frames, tilted polaroid service cards on a horizontal deck, handwritten accents, paper texture. Warm and personal.",
+              "artisan":"Maker's table scrapbook. Tilted polaroid service cards on a horizontal deck, handwritten accents, soft rounded photo frames, paper texture. Warm and personal.",
               "moody":"Warm luxe, cinematic. Her food photos fill the screen in alternating full bleed bands, deep jewel and gold accents. Dramatic without the heavy dark."}
     for tk,tv in THEMES.items():
         cards += f"""<a class="choice" href="index_{tk}.html">
