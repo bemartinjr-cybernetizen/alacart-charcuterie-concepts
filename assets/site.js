@@ -43,6 +43,16 @@
     }, 5200);
   });
 
+  // horizontal deck arrows (scrapbook service deck)
+  document.querySelectorAll('.deck-arrow').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var wrap = btn.closest('.deck-wrap'); if (!wrap) return;
+      var deck = wrap.querySelector('.deck'); if (!deck) return;
+      var amt = Math.max(320, deck.clientWidth * 0.8);
+      deck.scrollBy({ left: btn.dataset.dir === 'next' ? amt : -amt, behavior: 'smooth' });
+    });
+  });
+
   // quote-request form success
   var f = document.getElementById('quoteForm');
   if (f) {

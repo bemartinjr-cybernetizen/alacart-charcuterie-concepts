@@ -219,7 +219,7 @@ BLOG = [
      "For Kansas City and Lawrence weddings and parties, the cart blends catering and decor into one. It serves a crowd, looks stunning in photos, and gives your event a focal point without taking up a permanent table.",
      "We bring the cart to venues across the metro. Reach out with your date, location, and headcount and we will tailor the build to your event.",
    ]),
- dict(slug="meet-rebecca-a-la-cart-story", cat="Our Story", thumb="owner", inline=["hero_cart","board_round"],
+ dict(slug="meet-rebecca-a-la-cart-story", cat="Our Story", thumb="board_round", inline=["hero_cart","cups_close"],
    title="Meet Rebecca: The Story Behind A La Cart Charcuterie Co.",
    excerpt="A Lawrence, Kansas based maker whose attention to detail has guests talking long after the event.",
    body=[
