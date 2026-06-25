@@ -170,7 +170,7 @@ BLOG = [
    ]),
  dict(slug="meet-rebecca-a-la-cart-story", cat="Our Story", thumb="owner", inline=["hero_cart","board_round"],
    title="Meet Rebecca: The Story Behind A La Cart Charcuterie Co.",
-   excerpt="A Lawrence based maker whose attention to detail has guests talking long after the event.",
+   excerpt="A Lawrence, Kansas based maker whose attention to detail has guests talking long after the event.",
    body=[
      "A La Cart Charcuterie Co. began with a simple belief: that food can be beautiful, generous, and personal all at once. Rebecca is the artist behind every spread, and her eye for detail is what customers mention again and again.",
      "From a single charcuterie box to a full wedding grazing table, she builds each order by hand and styles it on site, treating presentation as seriously as the ingredients. Guests do not just eat the spread, they remember it.",
@@ -511,7 +511,7 @@ def intro(prefix=""):
     return f"""<section id="story"><div class="wrap"><div class="intro">
 <div class="txt"><div class="eyebrow">Our story</div>
 <h2>Hand built, styled on site, made to be remembered</h2>
-<p>A La Cart Charcuterie Co. is a Lawrence based maker of grazing tables, charcuterie boards, cups, and boxes for weddings, parties, and everything in between. Rebecca is the artist behind every spread.</p>
+<p>A La Cart Charcuterie Co. is a Lawrence, Kansas based maker of grazing tables, charcuterie boards, cups, and boxes for weddings, parties, and everything in between. Rebecca is the artist behind every spread.</p>
 <p>The reviews say it best. Guests do not just eat what she builds, they photograph it, talk about it, and ask who made it. That attention to detail is the whole point.</p>
 <a class="btn" href="#contact">Plan your event</a></div>
 <div class="pic">{img_tag('cups_close','Branded A La Cart charcuterie cups',prefix=prefix)}<div class="tag">Crafted by Rebecca</div></div>
