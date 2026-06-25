@@ -812,9 +812,9 @@ def build_blog():
 # ----------------------------------------------------------------------------- CHOOSER
 def build_chooser():
     cards = ""
-    blurbs = {"editorial":"Light, refined, magazine style. Cream and sage, elegant serif type, airy whitespace. An evolution of the current elegant brand.",
-              "artisan":"Warm, handcrafted, local. Terracotta and oatmeal, friendly serif with a handwritten accent. The farmers market feel.",
-              "moody":"Dramatic and luxe. Deep espresso with gold, food that pops against dark. Built for the wedding and high end event lane."}
+    blurbs = {"editorial":"Editorial magazine. A fixed vertical side nav, asymmetric split hero, numbered zig-zag service rows, and one oversized rotating quote. Type and whitespace led.",
+              "artisan":"Maker's table scrapbook. Arched photo frames, tilted polaroid service cards on a horizontal deck, handwritten accents, paper texture. Warm and personal.",
+              "moody":"Warm luxe, cinematic. Her food photos fill the screen in alternating full bleed bands, deep jewel and gold accents. Dramatic without the heavy dark."}
     for tk,tv in THEMES.items():
         cards += f"""<a class="choice" href="index_{tk}.html">
 <div class="cp">{img_tag('hero_cart' if tk=='editorial' else ('trailer' if tk=='artisan' else 'board_round'),tv['label'])}</div>
@@ -846,7 +846,8 @@ def build_chooser():
 </body></html>"""
     open(os.path.join(ROOT,"index.html"),"w").write(page)
 
-for tk in THEMES: build_home(tk)
+# Homepages are now hand-authored, distinct-layout standalone files (index_editorial/artisan/moody.html).
+# build_home() is retained for reference but no longer run, so the generator won't clobber them.
 build_blog()
 build_city_pages()
 build_areas_index()

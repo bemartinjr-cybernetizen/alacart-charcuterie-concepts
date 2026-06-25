@@ -2,8 +2,8 @@
 (function () {
   document.body.classList.add('js-on');
 
-  // scroll reveal
-  var reveals = document.querySelectorAll('.reveal');
+  // scroll reveal (.reveal = fade/rise, .poly = settling polaroid)
+  var reveals = document.querySelectorAll('.reveal, .poly');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -13,7 +13,19 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
   // failsafe: never leave content hidden
-  setTimeout(function () { document.querySelectorAll('.reveal:not(.in)').forEach(function (el) { el.classList.add('in'); }); }, 3000);
+  setTimeout(function () { document.querySelectorAll('.reveal:not(.in), .poly:not(.in)').forEach(function (el) { el.classList.add('in'); }); }, 3000);
+
+  // parallax (elements with data-parallax move slower than scroll)
+  var px = document.querySelectorAll('[data-parallax]');
+  if (px.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var tick = function () {
+      px.forEach(function (el) {
+        var r = el.getBoundingClientRect(), mid = r.top + r.height / 2 - window.innerHeight / 2;
+        el.style.transform = 'translateY(' + (mid * -0.08) + 'px) scale(1.12)';
+      });
+    };
+    tick(); window.addEventListener('scroll', tick, { passive: true });
+  }
 
   // sticky nav state
   var nav = document.querySelector('[data-nav]');
