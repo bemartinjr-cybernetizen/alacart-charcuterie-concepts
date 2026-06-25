@@ -2,6 +2,12 @@
 (function () {
   document.body.classList.add('js-on');
 
+  // ease initial-load jank on phones: decode off the main thread, lazy-load below-fold imgs
+  document.querySelectorAll('img').forEach(function (img) {
+    img.decoding = 'async';
+    if (!img.closest('.hero') && !img.hasAttribute('loading')) img.loading = 'lazy';
+  });
+
   // scroll reveal (.reveal = fade/rise, .poly = settling polaroid)
   var reveals = document.querySelectorAll('.reveal, .poly');
   if ('IntersectionObserver' in window) {
@@ -15,16 +21,26 @@
   // failsafe: never leave content hidden
   setTimeout(function () { document.querySelectorAll('.reveal:not(.in), .poly:not(.in)').forEach(function (el) { el.classList.add('in'); }); }, 3000);
 
-  // parallax (elements with data-parallax move slower than scroll)
+  // parallax — desktop + fine-pointer only, rAF-throttled. Mobile/touch keeps a static
+  // hero so scrolling stays smooth (scroll-driven transforms are the usual phone jank).
   var px = document.querySelectorAll('[data-parallax]');
-  if (px.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var tick = function () {
+  var pxOK = px.length && window.matchMedia('(min-width:900px) and (pointer:fine)').matches
+             && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (pxOK) {
+    var pxTicking = false;
+    var pxApply = function () {
       px.forEach(function (el) {
         var r = el.getBoundingClientRect(), mid = r.top + r.height / 2 - window.innerHeight / 2;
-        el.style.transform = 'translateY(' + (mid * -0.08) + 'px) scale(1.12)';
+        el.style.transform = 'translateY(' + (mid * -0.06) + 'px) scale(1.1)';
       });
+      pxTicking = false;
     };
-    tick(); window.addEventListener('scroll', tick, { passive: true });
+    pxApply();
+    window.addEventListener('scroll', function () {
+      if (!pxTicking) { pxTicking = true; requestAnimationFrame(pxApply); }
+    }, { passive: true });
+  } else {
+    px.forEach(function (el) { el.style.transform = 'none'; });
   }
 
   // sticky nav state
