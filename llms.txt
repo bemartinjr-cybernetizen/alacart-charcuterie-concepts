@@ -1,0 +1,33 @@
+# A La Cart Charcuterie Co.
+
+> Mobile charcuterie, grazing tables, boards, cups, boxes, and cart catering for weddings and events in Lawrence, KS and the Greater Topeka and Kansas City metros. 5.0 stars, family run, styled on site by Rebecca.
+
+## Key pages
+- [Home](index_editorial.html): services, reviews, and booking
+- [Service Areas](areas/index.html): every city we serve
+- [The Journal](blog/index.html): charcuterie tips and planning guides
+
+## Service area pages
+- [Charcuterie in Lawrence, KS](areas/lawrence.html): grazing tables, boards, cups, and cart catering in Lawrence
+- [Charcuterie in Eudora, KS](areas/eudora.html): grazing tables, boards, cups, and cart catering in Eudora
+- [Charcuterie in Baldwin City, KS](areas/baldwin-city.html): grazing tables, boards, cups, and cart catering in Baldwin City
+- [Charcuterie in Lecompton, KS](areas/lecompton.html): grazing tables, boards, cups, and cart catering in Lecompton
+- [Charcuterie in De Soto, KS](areas/de-soto.html): grazing tables, boards, cups, and cart catering in De Soto
+- [Charcuterie in Tonganoxie, KS](areas/tonganoxie.html): grazing tables, boards, cups, and cart catering in Tonganoxie
+- [Charcuterie in Overland Park, KS](areas/overland-park.html): grazing tables, boards, cups, and cart catering in Overland Park
+- [Charcuterie in Olathe, KS](areas/olathe.html): grazing tables, boards, cups, and cart catering in Olathe
+- [Charcuterie in Lenexa, KS](areas/lenexa.html): grazing tables, boards, cups, and cart catering in Lenexa
+- [Charcuterie in Shawnee, KS](areas/shawnee.html): grazing tables, boards, cups, and cart catering in Shawnee
+- [Charcuterie in Leawood, KS](areas/leawood.html): grazing tables, boards, cups, and cart catering in Leawood
+- [Charcuterie in Prairie Village, KS](areas/prairie-village.html): grazing tables, boards, cups, and cart catering in Prairie Village
+- [Charcuterie in Gardner, KS](areas/gardner.html): grazing tables, boards, cups, and cart catering in Gardner
+- [Charcuterie in Spring Hill, KS](areas/spring-hill.html): grazing tables, boards, cups, and cart catering in Spring Hill
+- [Charcuterie in Kansas City, KS](areas/kansas-city.html): grazing tables, boards, cups, and cart catering in Kansas City
+- [Charcuterie in Bonner Springs, KS](areas/bonner-springs.html): grazing tables, boards, cups, and cart catering in Bonner Springs
+- [Charcuterie in Topeka, KS](areas/topeka.html): grazing tables, boards, cups, and cart catering in Topeka
+- [Charcuterie in Ottawa, KS](areas/ottawa.html): grazing tables, boards, cups, and cart catering in Ottawa
+- [Charcuterie in Wellsville, KS](areas/wellsville.html): grazing tables, boards, cups, and cart catering in Wellsville
+- [Charcuterie in Paola, KS](areas/paola.html): grazing tables, boards, cups, and cart catering in Paola
+- [Charcuterie in Atchison, KS](areas/atchison.html): grazing tables, boards, cups, and cart catering in Atchison
+- [Charcuterie in Leavenworth, KS](areas/leavenworth.html): grazing tables, boards, cups, and cart catering in Leavenworth
+- [Charcuterie in Lansing, KS](areas/lansing.html): grazing tables, boards, cups, and cart catering in Lansing

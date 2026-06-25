@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>A La Cart Charcuterie Co. | Grazing Tables, Boards &amp; Cart Catering | Lawrence &amp; Kansas City</title>
+<title>A La Cart Charcuterie Co. | Grazing Tables, Boards &amp; Cart Catering | Lawrence, Topeka &amp; Kansas City</title>
 <meta name="description" content="A La Cart Charcuterie Co. Mobile charcuterie, grazing tables, boards, cups, and cart catering for weddings and events in Lawrence, KS and the Greater Topeka and Kansas City metros.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
@@ -99,7 +99,8 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-fi
 .areas{background:var(--accent);color:var(--on-accent);text-align:center}
 .areas h2{color:var(--on-accent)}
 .areas .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
-.areas .chips span{border:1px solid var(--on-accent);opacity:.9;padding:8px 18px;border-radius:999px;font-family:var(--body);font-size:.9rem}
+.areas .chips a{border:1px solid var(--on-accent);opacity:.92;padding:8px 18px;border-radius:999px;font-family:var(--body);font-size:.9rem;transition:background .2s,color .2s,opacity .2s}
+.areas .chips a:hover{background:var(--on-accent);color:var(--accent);opacity:1}
 /* BLOG TEASER + INDEX */
 .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
 .post{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
@@ -183,9 +184,28 @@ html.js .reveal{opacity:0;transform:translateY(30px)}
 .btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .7s ease}
 .btn:hover::after{left:140%}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero .bg img{animation:none}.track{animation:none!important}.sec-head.in h2::after{transition:none}}
+/* ---- CITY / SERVICE-AREA PAGES ---- */
+.city-hero{padding:64px 0 6px;text-align:center;max-width:840px;margin:0 auto}
+.city-hero .crumb{font-family:var(--body);font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.city-hero .crumb a{color:var(--accent)}
+.city-hero h1{font-size:clamp(2rem,4.6vw,3.2rem);margin:8px 0 18px}
+.city-hero .lede{color:var(--muted);font-size:1.14rem}
+.city-band{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.city-band .txt p{color:var(--muted);font-size:1.05rem;margin-bottom:16px}
+.city-band .pic img{width:100%;border-radius:var(--radius-lg);box-shadow:0 24px 50px var(--shadow)}
+@media(max-width:820px){.city-band{grid-template-columns:1fr;gap:32px}}
+.city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.city-grid a{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:3px}
+.city-grid a:hover{transform:translateY(-4px);box-shadow:0 16px 34px var(--shadow);border-color:var(--accent)}
+.city-grid a b{font-family:var(--display);font-size:1.12rem;font-weight:600}
+.city-grid a small{font-family:var(--body);font-size:.76rem;color:var(--muted)}
+.nearby{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.nearby a{border:1px solid var(--line);padding:7px 16px;border-radius:999px;font-family:var(--body);font-size:.88rem;color:var(--accent)}
+.nearby a:hover{background:var(--soft)}
+@media(max-width:860px){.city-grid{grid-template-columns:1fr 1fr}}
 </style>
 <script>document.documentElement.classList.add('js')</script></head><body>
-<div class="mockbar">CONCEPT MOCKUP for A La Cart Charcuterie Co. &nbsp;&middot;&nbsp; Theme: <b>Warm Artisan Market</b> &nbsp;&middot;&nbsp; built by Eagle Point Publishing</div><header class="nav"><div class="wrap">
+<div class="mockbar">CONCEPT MOCKUP for A La Cart Charcuterie Co. &nbsp;&middot;&nbsp; Theme: <b>Warm Artisan Market</b> &nbsp;&middot;&nbsp; built by Eagle Point Publishing</div><script type="application/ld+json">{"@context": "https://schema.org", "@type": ["LocalBusiness", "FoodEstablishment"], "name": "A La Cart Charcuterie Co.", "image": "https://bemartinjr-cybernetizen.github.io/alacart-charcuterie-concepts/assets/img/real/cart_at_wedding.jpg", "url": "https://bemartinjr-cybernetizen.github.io/alacart-charcuterie-concepts/", "telephone": "(913) 217-5908", "email": "hello@alacartcharcuterieco.com", "priceRange": "$$", "servesCuisine": "Charcuterie", "address": {"@type": "PostalAddress", "addressLocality": "Lawrence", "addressRegion": "KS", "addressCountry": "US"}, "areaServed": [{"@type": "City", "name": "Lawrence, KS"}, {"@type": "City", "name": "Eudora, KS"}, {"@type": "City", "name": "Baldwin City, KS"}, {"@type": "City", "name": "Lecompton, KS"}, {"@type": "City", "name": "De Soto, KS"}, {"@type": "City", "name": "Tonganoxie, KS"}, {"@type": "City", "name": "Overland Park, KS"}, {"@type": "City", "name": "Olathe, KS"}, {"@type": "City", "name": "Lenexa, KS"}, {"@type": "City", "name": "Shawnee, KS"}, {"@type": "City", "name": "Leawood, KS"}, {"@type": "City", "name": "Prairie Village, KS"}, {"@type": "City", "name": "Gardner, KS"}, {"@type": "City", "name": "Spring Hill, KS"}, {"@type": "City", "name": "Kansas City, KS"}, {"@type": "City", "name": "Bonner Springs, KS"}, {"@type": "City", "name": "Topeka, KS"}, {"@type": "City", "name": "Ottawa, KS"}, {"@type": "City", "name": "Wellsville, KS"}, {"@type": "City", "name": "Paola, KS"}, {"@type": "City", "name": "Atchison, KS"}, {"@type": "City", "name": "Leavenworth, KS"}, {"@type": "City", "name": "Lansing, KS"}], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "7"}, "sameAs": ["https://www.facebook.com/profile.php?id=61576221921489", "https://www.yelp.com/biz/a-la-cart-charcuterie-lawrence", "https://search.google.com/local/reviews?placeid=ChIJtdudUadnv4cRxcH9MTJodZs"]}</script><header class="nav"><div class="wrap">
 <a class="brand" href="index_artisan.html"><span class="script">A La Cart</span><span class="sub">Charcuterie Co.</span></a>
 <nav><a href="index_artisan.html#services">Services</a><a href="index_artisan.html#gallery">Gallery</a><a href="index_artisan.html#reviews">Reviews</a><a href="index_artisan.html#journal">Journal</a><a href="index_artisan.html#areas">Areas</a><a href="index_artisan.html#contact">Contact</a><a class="navcta" href="index_artisan.html#contact">Book Now</a></nav>
 </div></header><section class="hero">
@@ -267,8 +287,10 @@ html.js .reveal{opacity:0;transform:translateY(30px)}
 <div class="gal"><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/fb_122148158648874064_2045x2048.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/fb_122158624262874064_2048x1536.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/wedding_trailer.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/fb_122149932296874064_2048x1513.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/fb_122162304050874064_1536x2048.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/fb_122140420256874064_1536x2048.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/fb_122164717478874064_2048x1536.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a><a href="https://www.facebook.com/profile.php?id=61576221921489" target="_blank" rel="noopener"><img src="assets/img/real/fb_122164717466874064_1536x2048.jpg" alt="A La Cart charcuterie" loading="lazy" class=""></a></div></div></section><section class="areas" id="areas"><div class="wrap"><div class="sec-head">
 <div class="eyebrow" style="color:var(--on-accent);opacity:.85">Where we serve</div>
 <h2>Lawrence and the Greater Topeka and Kansas City metros</h2>
-<p style="color:var(--on-accent);opacity:.9">Based in Lawrence, KS and traveling throughout the region for weddings, parties, and corporate events.</p></div>
-<div class="chips"><span>Lawrence</span><span>Lecompton</span><span>Eudora</span><span>Baldwin City</span><span>Overland Park</span><span>Olathe</span><span>Kansas City</span><span>Topeka</span><span>De Soto</span><span>Leawood</span></div></div></section><section id="journal"><div class="wrap"><div class="sec-head">
+<p style="color:var(--on-accent);opacity:.9">Based in Lawrence, KS and traveling throughout the region for weddings, parties, and corporate events. Tap your town for details.</p></div>
+<div class="chips"><a href="areas/lawrence.html">Lawrence</a><a href="areas/eudora.html">Eudora</a><a href="areas/baldwin-city.html">Baldwin City</a><a href="areas/lecompton.html">Lecompton</a><a href="areas/de-soto.html">De Soto</a><a href="areas/tonganoxie.html">Tonganoxie</a><a href="areas/overland-park.html">Overland Park</a><a href="areas/olathe.html">Olathe</a><a href="areas/lenexa.html">Lenexa</a><a href="areas/shawnee.html">Shawnee</a><a href="areas/leawood.html">Leawood</a><a href="areas/prairie-village.html">Prairie Village</a><a href="areas/gardner.html">Gardner</a><a href="areas/spring-hill.html">Spring Hill</a><a href="areas/kansas-city.html">Kansas City</a><a href="areas/bonner-springs.html">Bonner Springs</a><a href="areas/topeka.html">Topeka</a><a href="areas/ottawa.html">Ottawa</a><a href="areas/wellsville.html">Wellsville</a><a href="areas/paola.html">Paola</a><a href="areas/atchison.html">Atchison</a><a href="areas/leavenworth.html">Leavenworth</a><a href="areas/lansing.html">Lansing</a></div>
+<div style="text-align:center;margin-top:30px"><a class="btn ghost" style="color:var(--on-accent);border-color:var(--on-accent)" href="areas/index.html">See all service areas</a></div>
+</div></section><section id="journal"><div class="wrap"><div class="sec-head">
 <div class="eyebrow">From the journal</div><h2>Tips, planning, and inspiration</h2>
 <p>Ideas for weddings, parties, and gatherings across Lawrence and Kansas City.</p></div>
 <div class="posts"><a class="post" href="blog/grazing-tables-kansas-city.html">
@@ -324,7 +346,7 @@ html.js .reveal{opacity:0;transform:translateY(30px)}
 </div></footer>
 <script>
 (function(){
- var sel=['.sec-head','.intro .txt','.intro .pic','.svc','.post','.gal a','.areas .chips span','.faq','.contact .info','#quoteWrap','.article > p','.article figure','.lead-img','.cta-card'];
+ var sel=['.sec-head','.intro .txt','.intro .pic','.svc','.post','.gal a','.areas .chips a','.faq','.contact .info','#quoteWrap','.article > p','.article figure','.lead-img','.cta-card','.city-grid > *'];
  var els=[];sel.forEach(function(s){document.querySelectorAll(s).forEach(function(e){e.classList.add('reveal');els.push(e);});});
  document.querySelectorAll('.svc-grid,.posts,.gal').forEach(function(g){Array.prototype.forEach.call(g.children,function(c,i){c.style.transitionDelay=(i*0.08)+'s';});});
  if('IntersectionObserver' in window){

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # A La Cart Charcuterie Co. - mockup generator (3 themes + 12-post blog)
 # Single-process build. Customer-facing: no em dashes, her real photos, real reviews.
-import os, html, shutil
+import os, html, shutil, json
 
 ROOT = os.path.expanduser("~/site-work/alacart-mockups")
 IMG = "assets/img/real"
@@ -77,6 +77,57 @@ FAQS = [
     ("Can you accommodate dietary needs?", "Yes. We regularly build around gluten free, vegetarian, and other preferences. Tell us when you inquire and we design the spread accordingly."),
     ("Do you set up on site?", "Grazing tables, the cart, and the trailer are styled on site by Rebecca. Boxes and cups are delivered ready to serve."),
 ]
+
+# Service-area cities for local SEO/GEO landing pages (Lawrence - Topeka - KC corridor)
+CITIES = [
+ dict(slug="lawrence", name="Lawrence", county="Douglas County", mins="home base",
+      hook="our home base, from downtown Massachusetts Street celebrations to weddings at venues across Douglas County"),
+ dict(slug="eudora", name="Eudora", county="Douglas County", mins="about 15 minutes east of Lawrence",
+      hook="just east of Lawrence, an easy reach for backyard parties, showers, and intimate gatherings"),
+ dict(slug="baldwin-city", name="Baldwin City", county="Douglas County", mins="about 20 minutes south of Lawrence",
+      hook="home of Baker University, a natural fit for graduations and campus celebrations"),
+ dict(slug="lecompton", name="Lecompton", county="Douglas County", mins="about 15 minutes from Lawrence",
+      hook="a historic small town where intimate, beautifully styled gatherings shine"),
+ dict(slug="de-soto", name="De Soto", county="Johnson County", mins="between Lawrence and Kansas City",
+      hook="sitting between Lawrence and the metro, central for grazing tables on either side of the line"),
+ dict(slug="tonganoxie", name="Tonganoxie", county="Leavenworth County", mins="about 25 minutes northeast of Lawrence",
+      hook="a quick trip north for country weddings and relaxed outdoor events"),
+ dict(slug="overland-park", name="Overland Park", county="Johnson County", mins="about 45 minutes east",
+      hook="the metro's largest suburb and a hub for corporate events and upscale weddings"),
+ dict(slug="olathe", name="Olathe", county="Johnson County", mins="about 40 minutes east",
+      hook="a fast growing Johnson County city with no shortage of celebrations to cater"),
+ dict(slug="lenexa", name="Lenexa", county="Johnson County", mins="in the Kansas City metro",
+      hook="the City of Festivals, made for parties, showers, and corporate gatherings"),
+ dict(slug="shawnee", name="Shawnee", county="Johnson County", mins="in the Kansas City metro",
+      hook="family friendly and event ready across the metro's west side"),
+ dict(slug="leawood", name="Leawood", county="Johnson County", mins="in the Kansas City metro",
+      hook="where polished, upscale presentations feel right at home"),
+ dict(slug="prairie-village", name="Prairie Village", county="Johnson County", mins="in the Kansas City metro",
+      hook="classic neighborhoods and showers that call for an elegant grazing spread"),
+ dict(slug="gardner", name="Gardner", county="Johnson County", mins="on the metro's southwest edge",
+      hook="an easy reach on the metro's southwest edge for weddings and family reunions"),
+ dict(slug="spring-hill", name="Spring Hill", county="Johnson and Miami Counties", mins="south of the metro",
+      hook="a fast growing community south of the metro with celebrations year round"),
+ dict(slug="kansas-city", name="Kansas City", county="Wyandotte County", mins="about 45 minutes east",
+      hook="the heart of the metro, from rooftop receptions to corporate suites"),
+ dict(slug="bonner-springs", name="Bonner Springs", county="Wyandotte County", mins="about 35 minutes east",
+      hook="home to outdoor venues and amphitheater events that pair perfectly with a cart"),
+ dict(slug="topeka", name="Topeka", county="Shawnee County", mins="about 30 minutes west of Lawrence",
+      hook="the capital city, from statehouse area events to garden and outdoor weddings"),
+ dict(slug="ottawa", name="Ottawa", county="Franklin County", mins="about 35 minutes south of Lawrence",
+      hook="a charming county seat south of Lawrence, ideal for rustic and barn celebrations"),
+ dict(slug="wellsville", name="Wellsville", county="Franklin County", mins="about 25 minutes south of Lawrence",
+      hook="small town warmth between Lawrence and Ottawa"),
+ dict(slug="paola", name="Paola", county="Miami County", mins="south of the metro",
+      hook="lake country south of the metro, made for outdoor gatherings and weddings"),
+ dict(slug="atchison", name="Atchison", county="Atchison County", mins="about 50 minutes north of Lawrence",
+      hook="a historic river town to the north, perfect for vintage and old soul weddings"),
+ dict(slug="leavenworth", name="Leavenworth", county="Leavenworth County", mins="about 45 minutes north",
+      hook="the first city of Kansas, rich with historic venues and event spaces"),
+ dict(slug="lansing", name="Lansing", county="Leavenworth County", mins="about 45 minutes north",
+      hook="a friendly community just south of Leavenworth"),
+]
+CITY_BY_SLUG = {c["slug"]: c for c in CITIES}
 
 # 12 blog posts - SEO targeted to her keyword gaps (KC metro, weddings, cart rental, grazing tables)
 BLOG = [
@@ -272,7 +323,8 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-fi
 .areas{background:var(--accent);color:var(--on-accent);text-align:center}
 .areas h2{color:var(--on-accent)}
 .areas .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
-.areas .chips span{border:1px solid var(--on-accent);opacity:.9;padding:8px 18px;border-radius:999px;font-family:var(--body);font-size:.9rem}
+.areas .chips a{border:1px solid var(--on-accent);opacity:.92;padding:8px 18px;border-radius:999px;font-family:var(--body);font-size:.9rem;transition:background .2s,color .2s,opacity .2s}
+.areas .chips a:hover{background:var(--on-accent);color:var(--accent);opacity:1}
 /* BLOG TEASER + INDEX */
 .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
 .post{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
@@ -356,6 +408,25 @@ html.js .reveal{opacity:0;transform:translateY(30px)}
 .btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .7s ease}
 .btn:hover::after{left:140%}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero .bg img{animation:none}.track{animation:none!important}.sec-head.in h2::after{transition:none}}
+/* ---- CITY / SERVICE-AREA PAGES ---- */
+.city-hero{padding:64px 0 6px;text-align:center;max-width:840px;margin:0 auto}
+.city-hero .crumb{font-family:var(--body);font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.city-hero .crumb a{color:var(--accent)}
+.city-hero h1{font-size:clamp(2rem,4.6vw,3.2rem);margin:8px 0 18px}
+.city-hero .lede{color:var(--muted);font-size:1.14rem}
+.city-band{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.city-band .txt p{color:var(--muted);font-size:1.05rem;margin-bottom:16px}
+.city-band .pic img{width:100%;border-radius:var(--radius-lg);box-shadow:0 24px 50px var(--shadow)}
+@media(max-width:820px){.city-band{grid-template-columns:1fr;gap:32px}}
+.city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.city-grid a{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:3px}
+.city-grid a:hover{transform:translateY(-4px);box-shadow:0 16px 34px var(--shadow);border-color:var(--accent)}
+.city-grid a b{font-family:var(--display);font-size:1.12rem;font-weight:600}
+.city-grid a small{font-family:var(--body);font-size:.76rem;color:var(--muted)}
+.nearby{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.nearby a{border:1px solid var(--line);padding:7px 16px;border-radius:999px;font-family:var(--body);font-size:.88rem;color:var(--accent)}
+.nearby a:hover{background:var(--soft)}
+@media(max-width:860px){.city-grid{grid-template-columns:1fr 1fr}}
 """
 
 THEMES = {
@@ -448,7 +519,7 @@ def footer(prefix=""):
 </div></footer>
 <script>
 (function(){{
- var sel=['.sec-head','.intro .txt','.intro .pic','.svc','.post','.gal a','.areas .chips span','.faq','.contact .info','#quoteWrap','.article > p','.article figure','.lead-img','.cta-card'];
+ var sel=['.sec-head','.intro .txt','.intro .pic','.svc','.post','.gal a','.areas .chips a','.faq','.contact .info','#quoteWrap','.article > p','.article figure','.lead-img','.cta-card','.city-grid > *'];
  var els=[];sel.forEach(function(s){{document.querySelectorAll(s).forEach(function(e){{e.classList.add('reveal');els.push(e);}});}});
  document.querySelectorAll('.svc-grid,.posts,.gal').forEach(function(g){{Array.prototype.forEach.call(g.children,function(c,i){{c.style.transitionDelay=(i*0.08)+'s';}});}});
  if('IntersectionObserver' in window){{
@@ -525,13 +596,15 @@ def gallery(prefix=""):
 <p>See more on our Facebook. Every board, box, and table is one of a kind.</p></div>
 <div class="gal">{cells}</div></div></section>"""
 
-def areas():
-    chips = "".join(f"<span>{a}</span>" for a in BIZ["areas"])
+def areas(prefix=""):
+    chips = "".join(f'<a href="{prefix}areas/{c["slug"]}.html">{c["name"]}</a>' for c in CITIES)
     return f"""<section class="areas" id="areas"><div class="wrap"><div class="sec-head">
 <div class="eyebrow" style="color:var(--on-accent);opacity:.85">Where we serve</div>
 <h2>Lawrence and the Greater Topeka and Kansas City metros</h2>
-<p style="color:var(--on-accent);opacity:.9">Based in Lawrence, KS and traveling throughout the region for weddings, parties, and corporate events.</p></div>
-<div class="chips">{chips}</div></div></section>"""
+<p style="color:var(--on-accent);opacity:.9">Based in Lawrence, KS and traveling throughout the region for weddings, parties, and corporate events. Tap your town for details.</p></div>
+<div class="chips">{chips}</div>
+<div style="text-align:center;margin-top:30px"><a class="btn ghost" style="color:var(--on-accent);border-color:var(--on-accent)" href="{prefix}areas/index.html">See all service areas</a></div>
+</div></section>"""
 
 def blog_teaser(prefix=""):
     cards = ""
@@ -585,9 +658,102 @@ def contact():
 </form></div>
 </div></div></section>"""
 
+# ----------------------------------------------------------------------------- SCHEMA / GEO
+LIVE = "https://bemartinjr-cybernetizen.github.io/alacart-charcuterie-concepts"
+def biz_schema(city=None):
+    area = ([{"@type":"City","name":f"{city['name']}, KS"}] if city
+            else [{"@type":"City","name":f"{c['name']}, KS"} for c in CITIES])
+    return {"@context":"https://schema.org","@type":["LocalBusiness","FoodEstablishment"],
+        "name":"A La Cart Charcuterie Co.","image":f"{LIVE}/{P['hero_cart']}","url":LIVE+"/",
+        "telephone":BIZ["phone_display"],"email":BIZ["email"],"priceRange":"$$","servesCuisine":"Charcuterie",
+        "address":{"@type":"PostalAddress","addressLocality":"Lawrence","addressRegion":"KS","addressCountry":"US"},
+        "areaServed":area,
+        "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"7"},
+        "sameAs":[SOCIAL["facebook"],SOCIAL["yelp"],SOCIAL["google"]]}
+def service_schema(city):
+    return {"@context":"https://schema.org","@type":"Service",
+        "serviceType":"Charcuterie and grazing table catering",
+        "name":f"Charcuterie & Grazing Table Catering in {city['name']}, KS",
+        "provider":{"@type":"LocalBusiness","name":"A La Cart Charcuterie Co.","telephone":BIZ["phone_display"]},
+        "areaServed":{"@type":"City","name":f"{city['name']}, KS"}}
+def ld(obj): return f'<script type="application/ld+json">{json.dumps(obj)}</script>'
+
+# ----------------------------------------------------------------------------- BUILD CITY PAGES
+CITY_PICS = ["board_round","box_big","cups_trio","hero_cart","trailer","boxes_clam","cups_close","cup_wine","boxes_holiday","crackers"]
+def build_city_pages():
+    os.makedirs(os.path.join(ROOT,"areas"), exist_ok=True)
+    theme="editorial"; pre="../"
+    for i,c in enumerate(CITIES):
+        nearby=[CITIES[(i+off)%len(CITIES)] for off in (-2,-1,1,2)]
+        nb="".join(f'<a href="{n["slug"]}.html">Charcuterie in {n["name"]}</a>' for n in nearby)
+        intro_line=(f"Lawrence is our home base in {c['county']}." if c['slug']=='lawrence'
+                    else f"{c['name']} sits in {c['county']}, {c['mins']}.")
+        pic=CITY_PICS[i%len(CITY_PICS)]
+        schema=ld(biz_schema(c))+ld(service_schema(c))
+        page=(head(theme, f"Charcuterie & Grazing Tables in {c['name']}, KS | A La Cart Charcuterie Co.", pre)
+          + schema + nav(pre)
+          + f"""<section class="city-hero"><div class="wrap">
+<div class="crumb"><a href="../index_{theme}.html">Home</a> &middot; <a href="index.html">Service Areas</a> &middot; {c['name']}</div>
+<div class="eyebrow">Serving {c['name']}, KS</div>
+<h1>Charcuterie, Grazing Tables &amp; Cart Catering in {c['name']}, KS</h1>
+<p class="lede">{intro_line} A La Cart Charcuterie Co. brings handcrafted grazing tables, boards, cups, boxes, and our signature mobile cart to {c['name']} and the surrounding area, styled on site and built to be the centerpiece of your event.</p>
+</div></section>
+<section style="padding-top:48px"><div class="wrap"><div class="city-band">
+<div class="txt">
+<p>We love serving {c['name']}: {c['hook']}.</p>
+<p>Whether it is a wedding, a graduation open house, a corporate event, or a milestone birthday, we build a spread sized to your guest count and styled to your colors. Grazing tables and boards are assembled on site, and our charcuterie cart and vintage trailer travel to {c['name']} venues for a centerpiece guests gather around all evening.</p>
+<p>Planning an event in {c['name']}? Send your date and headcount and we will reply with availability and pricing within one business day.</p>
+<a class="btn" href="#contact">Request a {c['name']} quote</a>
+</div>
+<div class="pic">{img_tag(pic, f'Charcuterie by A La Cart in {c["name"]}, KS', prefix=pre)}</div>
+</div></div></section>"""
+          + services_section(pre) + reviews_carousel()
+          + f"""<section style="background:var(--soft)"><div class="wrap"><div class="sec-head">
+<div class="eyebrow">Nearby</div><h2>Also serving towns near {c['name']}</h2></div>
+<div class="nearby">{nb}<a href="index.html">All service areas &#8594;</a></div></div></section>"""
+          + contact() + footer(pre))
+        page=page.replace("index_THEME.html", f"index_{theme}.html")
+        open(os.path.join(ROOT,"areas",f"{c['slug']}.html"),"w").write(page)
+
+def build_areas_index():
+    theme="editorial"; pre="../"
+    cards="".join(f'<a href="{c["slug"]}.html"><b>{c["name"]}, KS</b><small>{c["county"]}</small></a>' for c in CITIES)
+    page=(head(theme,"Service Areas | A La Cart Charcuterie Co. | Lawrence, Topeka & Kansas City",pre)
+      + ld(biz_schema()) + nav(pre)
+      + f"""<section class="city-hero"><div class="wrap">
+<div class="eyebrow">Where we serve</div>
+<h1>Charcuterie &amp; Grazing Catering across the Lawrence, Topeka &amp; Kansas City region</h1>
+<p class="lede">Based in Lawrence, KS and traveling throughout the Greater Topeka and Kansas City metros for weddings, parties, and corporate events. Choose your town for local details.</p></div></section>
+<section style="padding-top:40px"><div class="wrap"><div class="city-grid">{cards}</div>
+<div style="text-align:center;margin-top:44px"><a class="btn" href="../index_{theme}.html#contact">Request a quote</a></div></div></section>"""
+      + footer(pre))
+    page=page.replace("index_THEME.html", f"index_{theme}.html")
+    open(os.path.join(ROOT,"areas","index.html"),"w").write(page)
+
+def build_geo_files():
+    # llms.txt for AI answer engines (GEO discovery)
+    lines=["# A La Cart Charcuterie Co.","",
+      "> Mobile charcuterie, grazing tables, boards, cups, boxes, and cart catering for weddings and events in Lawrence, KS and the Greater Topeka and Kansas City metros. 5.0 stars, family run, styled on site by Rebecca.","",
+      "## Key pages",
+      "- [Home](index_editorial.html): services, reviews, and booking",
+      "- [Service Areas](areas/index.html): every city we serve",
+      "- [The Journal](blog/index.html): charcuterie tips and planning guides","",
+      "## Service area pages"]
+    for c in CITIES:
+        lines.append(f"- [Charcuterie in {c['name']}, KS](areas/{c['slug']}.html): grazing tables, boards, cups, and cart catering in {c['name']}")
+    open(os.path.join(ROOT,"llms.txt"),"w").write("\n".join(lines)+"\n")
+    # sitemap.xml
+    urls=[f"{LIVE}/", f"{LIVE}/index_editorial.html", f"{LIVE}/index_artisan.html", f"{LIVE}/index_moody.html",
+          f"{LIVE}/blog/index.html", f"{LIVE}/areas/index.html"]
+    urls+=[f"{LIVE}/areas/{c['slug']}.html" for c in CITIES]
+    urls+=[f"{LIVE}/blog/{b['slug']}.html" for b in BLOG]
+    body="".join(f"<url><loc>{u}</loc></url>" for u in urls)
+    open(os.path.join(ROOT,"sitemap.xml"),"w").write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>')
+
 # ----------------------------------------------------------------------------- BUILD HOMEPAGES
 def build_home(theme):
-    body = (head(theme, f"A La Cart Charcuterie Co. | Grazing Tables, Boards & Cart Catering | Lawrence & Kansas City")
+    body = (head(theme, f"A La Cart Charcuterie Co. | Grazing Tables, Boards & Cart Catering | Lawrence, Topeka & Kansas City")
+            + ld(biz_schema())
             + nav() + hero(theme) + intro() + services_section() + reviews_carousel(
                 {"editorial":"120s","artisan":"100s","moody":"130s"}[theme])
             + gallery() + areas() + blog_teaser() + faq() + contact() + footer())
@@ -674,13 +840,17 @@ def build_chooser():
 <div class="hd"><div class="script">A La Cart</div><div class="sub">Charcuterie Co.</div>
 <h1>Three website concepts</h1><p>Prepared by Eagle Point Publishing for your review. Each concept is a full homepage using your real photos and reviews. Pick a direction and we build it out.</p></div>
 <div class="grid">{cards}</div>
-<div class="bloglink"><a href="blog/index.html">See the sample journal (12 articles) &#8594;</a></div>
+<div class="bloglink"><a href="blog/index.html">Sample journal (12 articles) &#8594;</a> &nbsp; <a href="areas/index.html">Service-area pages (23 cities) &#8594;</a></div>
 <div class="ft">Concept mockups &middot; Eagle Point Publishing &middot; 2026</div>
 </body></html>"""
     open(os.path.join(ROOT,"index.html"),"w").write(page)
 
 for tk in THEMES: build_home(tk)
 build_blog()
+build_city_pages()
+build_areas_index()
+build_geo_files()
 build_chooser()
 print("BUILT:", sorted(os.listdir(ROOT)))
-print("blog:", sorted(os.listdir(os.path.join(ROOT,"blog"))))
+print("blog:", len(os.listdir(os.path.join(ROOT,"blog"))), "files")
+print("areas:", len(os.listdir(os.path.join(ROOT,"areas"))), "files (", len(CITIES), "cities + index )")
